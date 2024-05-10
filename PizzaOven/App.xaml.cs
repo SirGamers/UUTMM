@@ -45,7 +45,7 @@ namespace PizzaOven
                 MainWindow mw = new MainWindow();
                 ShutdownMode = ShutdownMode.OnMainWindowClose;
                 mw.Show();
-                // Only check for updates if PizzaOven wasn't launched by 1-click install button
+                // Only check for updates if UUTMM wasn't launched by 1-click install button
                 if (e.Args.Length == 0)
                     if (await AutoUpdater.CheckForPizzaOvenUpdate(new CancellationTokenSource()))
                         mw.Close();
@@ -63,7 +63,7 @@ namespace PizzaOven
             }
             else if (running)
             {
-                MessageBox.Show("Pizza Oven is already running", "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                MessageBox.Show("UUTMM is already running", "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 Application.Current.Shutdown();
             }
         }

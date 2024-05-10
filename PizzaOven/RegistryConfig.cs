@@ -8,11 +8,11 @@ namespace PizzaOven
     {
         public static bool InstallGBHandler()
         {
-            string AppPath = $"{Global.assemblyLocation}{Global.s}PizzaOven.exe";
-            string protocolName = $"pizzaoven";
+            string AppPath = $"{Global.assemblyLocation}{Global.s}UUTMM.exe";
+            string protocolName = $"uutmm";
             try
             {
-                var reg = Registry.CurrentUser.CreateSubKey(@"Software\Classes\PizzaOven");
+                var reg = Registry.CurrentUser.CreateSubKey(@"Software\Classes\UUTMM");
                 reg.SetValue("", $"URL:{protocolName}");
                 reg.SetValue("URL Protocol", "");
                 reg = reg.CreateSubKey(@"shell\open\command");

@@ -34,7 +34,7 @@ namespace PizzaOven
                 GameBananaItem response = JsonSerializer.Deserialize<GameBananaItem>(await client.GetStringAsync(requestUrl));
                 if (response == null)
                 {
-                   MessageBox.Show("Error whilst checking for PizzaOven update: No response from GameBanana API");
+                   MessageBox.Show("Error whilst checking for UUTMM update: No response from GameBanana API");
                     return false;
                 }
                 if (response.HasUpdates != null && (bool)response.HasUpdates)
@@ -49,7 +49,7 @@ namespace PizzaOven
                     }
                     if (UpdateAvailable(onlineVersion, localVersion))
                     {
-                        ChangelogBox notification = new ChangelogBox(updates[0], "Pizza Oven", $"A new version of Pizza Oven is available (v{onlineVersion})!", null);
+                        ChangelogBox notification = new ChangelogBox(updates[0], "UUTMM", $"A new version of UUTMM is available (v{onlineVersion})!", null);
                         notification.ShowDialog();
                         notification.Activate();
                         if (notification.YesNo)
@@ -60,7 +60,7 @@ namespace PizzaOven
                             // Download the update
                             await DownloadPizzaOven(downloadUrl, fileName, onlineVersion, new Progress<DownloadProgress>(ReportUpdateProgress), cancellationToken);
                             // Notify that the update is about to happen
-                            MessageBox.Show($"Finished downloading {fileName}!\nPizza Oven will now restart.", "Notification", MessageBoxButton.OK);
+                            MessageBox.Show($"Finished downloading {fileName}!\nUUTMM will now restart.", "Notification", MessageBoxButton.OK);
                             // Update PizzaOven
                             UpdateManager updateManager = new UpdateManager(AssemblyMetadata.FromAssembly(Assembly.GetEntryAssembly(), Process.GetCurrentProcess().MainModule.FileName),
                                 new LocalPackageResolver($"{Global.assemblyLocation}{Global.s}Downloads{Global.s}PizzaOvenUpdate"), new ZipExtractor());
@@ -69,7 +69,7 @@ namespace PizzaOven
                                 MessageBox.Show($"Error parsing {onlineVersion}!\nCancelling update.", "Notification", MessageBoxButton.OK);
                                 return false;
                             }
-                            // Updates and restarts PizzaOven
+                            // Updates and restarts UUTMM
                             await updateManager.PrepareUpdateAsync(version);
                             updateManager.LaunchUpdater(version);
                             return true;
@@ -100,7 +100,7 @@ namespace PizzaOven
                 progressBox = new ProgressBox(cancellationToken);
                 progressBox.progressBar.Value = 0;
                 progressBox.progressText.Text = $"Downloading {fileName}";
-                progressBox.Title = "Pizza Oven Update Progress";
+                progressBox.Title = "UUTMM Update Progress";
                 progressBox.finished = false;
                 progressBox.Show();
                 progressBox.Activate();

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PizzaOven.UI"
         xmlns:fa5="http://schemas.fontawesome.com/icons/"
         mc:Ignorable="d"
-        Title="PizzaOven" WindowStartupLocation="CenterScreen"
+        Title="UUTMM" WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize" MinWidth="600"
         Background="#202020" ShowActivated="True" Closing="Window_Closing" SizeToContent="WidthAndHeight">
     <Window.Resources>
@@ -40,6 +40,10 @@
         </DataTemplate>
     </Window.Resources>
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="67*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -47,9 +51,9 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Padding="10,2,10,2" Background="Transparent" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" Name="TitleBox"/>
-        <TextBlock Grid.Row="1" Margin="10,2,10,2" Background="Transparent" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" Text="Multiple downloads were found, choose one:"/>
-        <ListView MaxHeight="500" Style="{StaticResource ListviewStyle}" Name="FileList" Grid.Row="2" Background="Transparent" BorderThickness="0" ItemTemplate="{StaticResource FileTemplate}">
+        <TextBlock Padding="10,2,10,2" Background="Transparent" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="25" FontWeight="Bold" Name="TitleBox" Grid.Column="1" Margin="226,0,0,0"/>
+        <TextBlock Grid.Row="1" Background="Transparent" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="16" Text="Multiple downloads were found, choose one:" Grid.Column="1" Margin="77,0,0,0"/>
+        <ListView MaxHeight="500" Style="{StaticResource ListviewStyle}" Name="FileList" Grid.Row="2" Background="Transparent" BorderThickness="0" ItemTemplate="{StaticResource FileTemplate}" Margin="0,0,0,4" Grid.ColumnSpan="2">
             <ListView.ItemContainerStyle>
                 <Style TargetType="{x:Type ListViewItem}">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -65,14 +69,14 @@
                 </Style>
             </ListView.ItemContainerStyle>
         </ListView>
-        <Button Grid.Row="3" HorizontalContentAlignment="Stretch" Margin="5" x:Name="DownloadAllButton" Content=" Download All" FontSize="18" FontWeight="Bold" HorizontalAlignment="Stretch"  VerticalAlignment="Bottom" Height="40"  Background="#494949" Foreground="#f2f2f2" Click="DownloadAll_Click">
+        <Button Grid.Row="3" HorizontalContentAlignment="Stretch" Margin="5,0,5,0" x:Name="DownloadAllButton" Content=" Download All" FontSize="18" FontWeight="Bold"  VerticalAlignment="Center" Height="40"  Background="#494949" Foreground="#f2f2f2" Click="DownloadAll_Click" Grid.ColumnSpan="2">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="2"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Grid.Row="4" HorizontalContentAlignment="Stretch" Margin="5" x:Name="CancelButton" Content=" Cancel" FontSize="18" FontWeight="Bold" HorizontalAlignment="Stretch"  VerticalAlignment="Bottom" Height="40"  Background="#494949" Foreground="#f2f2f2" Click="CancelButton_Click">
+        <Button Grid.Row="4" HorizontalContentAlignment="Stretch" Margin="5,0,5,0" x:Name="CancelButton" Content=" Cancel" FontSize="18" FontWeight="Bold"  VerticalAlignment="Center" Height="40"  Background="#494949" Foreground="#f2f2f2" Click="CancelButton_Click" Grid.ColumnSpan="2">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="2"/>

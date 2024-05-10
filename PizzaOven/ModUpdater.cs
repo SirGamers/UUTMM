@@ -246,10 +246,10 @@ namespace PizzaOven
                     }
                     if (item.AlternateFileSources != null)
                     {
-                        var choice = MessageBox.Show($"Alternate file sources were found for {Path.GetFileName(mod)}! Would you like to manually update?", "PizzaOven", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                        var choice = MessageBox.Show($"Alternate file sources were found for {Path.GetFileName(mod)}! Would you like to manually update?", "UUTMM", MessageBoxButton.YesNo, MessageBoxImage.Question);
                         if (choice == MessageBoxResult.Yes)
                         {
-                            new AltLinkWindow(item.AlternateFileSources, Path.GetFileName(mod), "Pizza Tower", metadata.homepage.AbsoluteUri, true).ShowDialog();
+                            new AltLinkWindow(item.AlternateFileSources, Path.GetFileName(mod), "Undertale", metadata.homepage.AbsoluteUri, true).ShowDialog();
                             return;
                         }
                     }

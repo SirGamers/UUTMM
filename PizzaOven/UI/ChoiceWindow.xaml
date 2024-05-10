@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PizzaOven.UI"
         xmlns:fa5="http://schemas.fontawesome.com/icons/"
         mc:Ignorable="d"
-        Title="PizzaOven" WindowStartupLocation="CenterScreen"
+        Title="UUTMM" WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize" Width="400"
         Background="#202020" ShowActivated="True" Closing="Window_Closing" SizeToContent="WidthAndHeight">
     <Window.Resources>

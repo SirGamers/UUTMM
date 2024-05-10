@@ -39,9 +39,9 @@ namespace PizzaOven
             File.Delete(@$"{sourceFilePath}");
             // Move the folders to the right place
             string parentPath = Directory.GetParent(destDirPath).FullName;
-            Directory.Move(Directory.GetDirectories(destDirPath)[0], $@"{parentPath}{Global.s}PizzaOven");
+            Directory.Move(Directory.GetDirectories(destDirPath)[0], $@"{parentPath}{Global.s}UUTMM");
             Directory.Delete(destDirPath);
-            Directory.Move($@"{parentPath}{Global.s}PizzaOven", destDirPath);
+            Directory.Move($@"{parentPath}{Global.s}UUTMM", destDirPath);
         }
 
     }

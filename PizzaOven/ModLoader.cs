@@ -18,7 +18,10 @@ namespace PizzaOven
         {
             // Restore all backups
             RestoreDirectory(Global.config.ModsFolder);
-            // Delete all banks that aren't vanilla
+            /*
+            old script, need to update to ogg
+
+            // Delete all OGGs that aren't vanilla
             var banks = new List<string> (new string[] { "master.bank", "master.strings.bank", "music.bank", "sfx.bank" });
             foreach (var file in Directory.GetFiles($"{Global.config.ModsFolder}{Global.s}sound{Global.s}Desktop", "*", SearchOption.AllDirectories))
                 if (!banks.Contains(Path.GetFileName(file).ToLowerInvariant()))
@@ -33,47 +36,16 @@ namespace PizzaOven
                             throw;
                         return false;
                     }
-            // Delete all dlls that aren't vanilla
-            var dlls = new List<string>(new string[] { "fmod.dll", "fmod-gamemaker.dll", "fmodstudio.dll", "gameframe_x64.dll", "steam_api.dll",
-            "steam_api64.dll", "steamworks_x64.dll"});
-            // Also delete mp4 files
-            foreach (var file in Directory.GetFiles($"{Global.config.ModsFolder}", "*", SearchOption.TopDirectoryOnly))
-                if ((Path.GetExtension(file).ToLowerInvariant() == ".dll" && !dlls.Contains(Path.GetFileName(file).ToLowerInvariant()))
-                    || Path.GetExtension(file).ToLowerInvariant() == ".mp4")
-                        try {
-                            File.Delete(file);
-                        }
-                        catch (Exception e)
-                        {
-                            if (e is System.UnauthorizedAccessException)
-                                Global.logger.WriteLine($"Access denied when trying to delete {file}. Try reinstalling Pizza Tower to a folder you have access to or running Pizza Oven in administrator mode", LoggerType.Error);
-                            else
-                                throw;
-                            return false;
-                        }
-            // Delete empty folders
-            foreach (var directory in Directory.GetDirectories($"{Global.config.ModsFolder}{Global.s}sound{Global.s}Desktop"))
-                    try {
-                        if (Directory.GetFiles(directory).Length == 0 && Directory.GetDirectories(directory).Length == 0)
-                            Directory.Delete(directory, false);
-                    }
-                    catch (Exception e)
-                    {
-                        if (e is System.UnauthorizedAccessException)
-                            Global.logger.WriteLine($"Access denied when trying to delete {directory}. Try reinstalling Pizza Tower to a folder you have access to or running Pizza Oven in administrator mode", LoggerType.Error);
-                        else
-                            throw;
-                        return false;
-                    }
-            // Delete .win from older version of Pizza Oven
-            if (File.Exists($"{Global.config.ModsFolder}{Global.s}PizzaOven.win"))
+            */
+            // Delete .win from older version of UUTMM
+            if (File.Exists($"{Global.config.ModsFolder}{Global.s}UUTMM.win"))
                 try {
-                    File.Delete($"{Global.config.ModsFolder}{Global.s}PizzaOven.win");
+                    File.Delete($"{Global.config.ModsFolder}{Global.s}UUTMM.win");
                 }
                 catch (Exception e)
                 {
                     if (e is System.UnauthorizedAccessException)
-                        Global.logger.WriteLine($"Access denied when trying to delete {Global.config.ModsFolder}{Global.s}PizzaOven.win. Try reinstalling Pizza Tower to a folder you have access to or running Pizza Oven in administrator mode", LoggerType.Error);
+                        Global.logger.WriteLine($"Access denied when trying to delete {Global.config.ModsFolder}{Global.s}UUTMM.win. Try reinstalling Undertale to a folder you have access to or running UUTMM in administrator mode", LoggerType.Error);
                     else
                         throw;
                     return false;
@@ -85,9 +57,11 @@ namespace PizzaOven
         {
             var errors = 0;
             var successes = 0;
-            var FilesToPatch = Directory.GetFiles($"{Global.config.ModsFolder}{Global.s}sound{Global.s}Desktop").ToList();
+            /* ditto
+             var FilesToPatch = Directory.GetFiles($"{Global.config.ModsFolder}{Global.s}sound{Global.s}Desktop").ToList();
             FilesToPatch.Insert(0, $"{Global.config.ModsFolder}{Global.s}data.win");
-            FilesToPatch.Insert(1, $"{Global.config.ModsFolder}{Global.s}PizzaTower.exe");
+            FilesToPatch.Insert(1, $"{Global.config.ModsFolder}{Global.s}UNDERTALE.exe");
+            */
             var xdelta = $"{Global.assemblyLocation}{Global.s}Dependencies{Global.s}xdelta.exe";
             if (!File.Exists(xdelta))
             {
