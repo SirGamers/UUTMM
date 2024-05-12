@@ -37,6 +37,41 @@ namespace PizzaOven
                         return false;
                     }
             */
+            // Delete all dlls that aren't vanilla
+            // keeping this cuz theres a small chance that its needed but prob not
+            var dlls = new List<string>(new string[] { "steam_api.dll", "D3DX9_43.dll"});
+            // Also delete mp4 files
+            foreach (var file in Directory.GetFiles($"{Global.config.ModsFolder}", "*", SearchOption.TopDirectoryOnly))
+                if ((Path.GetExtension(file).ToLowerInvariant() == ".dll" && !dlls.Contains(Path.GetFileName(file).ToLowerInvariant()))
+                    || Path.GetExtension(file).ToLowerInvariant() == ".mp4")
+                        try {
+                            File.Delete(file);
+                        }
+                        catch (Exception e)
+                        {
+                            if (e is System.UnauthorizedAccessException)
+                                Global.logger.WriteLine($"Access denied when trying to delete {file}. Try reinstalling Undertale to a folder you have access to or running UUTMM in administrator mode", LoggerType.Error);
+                            else
+                                throw;
+                            return false;
+                        }
+            /*
+            dunno if i need this yet
+            // Delete empty folders
+            foreach (var directory in Directory.GetDirectories($"{Global.config.ModsFolder}{Global.s}sound{Global.s}Desktop"))
+                    try {
+                        if (Directory.GetFiles(directory).Length == 0 && Directory.GetDirectories(directory).Length == 0)
+                            Directory.Delete(directory, false);
+                    }
+                    catch (Exception e)
+                    {
+                        if (e is System.UnauthorizedAccessException)
+                            Global.logger.WriteLine($"Access denied when trying to delete {directory}. Try reinstalling Undertale to a folder you have access to or running UUTMM in administrator mode", LoggerType.Error);
+                        else
+                            throw;
+                        return false;
+                    }
+            */
             // Delete .win from older version of UUTMM
             if (File.Exists($"{Global.config.ModsFolder}{Global.s}UUTMM.win"))
                 try {
@@ -66,7 +101,7 @@ namespace PizzaOven
             if (!File.Exists(xdelta))
             {
 
-                Global.logger.WriteLine($"{xdelta} is not found. Please try redownloading Pizza Oven", LoggerType.Error);
+                Global.logger.WriteLine($"{xdelta} is not found. Please try redownloading UUTMM", LoggerType.Error);
                 return false;
             }
             foreach (var modFile in Directory.GetFiles(mod, "*", SearchOption.AllDirectories))
@@ -99,8 +134,12 @@ namespace PizzaOven
                                 File.Move($"{Path.GetDirectoryName(file)}{Global.s}temp", file, true);
                                 Global.logger.WriteLine($"Applied {Path.GetFileName(modFile)} to {Path.GetFileName(file)}.", LoggerType.Info);
                                 successes++;
+                                /*
+                                dunno about this either
+                                
                                 if (Path.GetFileName(modFile).ToLowerInvariant().Contains("yyc") && File.Exists($"{Global.config.ModsFolder}{Global.s}Steamworks_x64.dll"))
                                     File.Move($"{Global.config.ModsFolder}{Global.s}Steamworks_x64.dll", $"{Global.config.ModsFolder}{Global.s}Steamworks_x64.dll.po", true);
+                                */
                             }
                             catch (Exception e)
                             {
@@ -120,7 +159,7 @@ namespace PizzaOven
                         {
                             if (gotAccessDeniedError)
                             {
-                                Global.logger.WriteLine($"{Path.GetFileName(modFile)} got an access denied error while patch a file. Try reinstalling Pizza Tower to a folder you have access to or running Pizza Oven in administrator mode", LoggerType.Error);
+                                Global.logger.WriteLine($"{Path.GetFileName(modFile)} got an access denied error while patch a file. Try reinstalling Undertale to a folder you have access to or running UUTMM in administrator mode", LoggerType.Error);
                             }
                             else
                             {
@@ -141,7 +180,7 @@ namespace PizzaOven
                         Global.logger.WriteLine($"Copied over {Path.GetFileName(modFile)} to use instead of data.win", LoggerType.Info);
                         successes++;
                     }
-                    // Copy over .ogg file
+                    // Copy over .ogg file 
                     else if (extension.Equals(".ogg", StringComparison.InvariantCultureIgnoreCase))
                     {
                         var FileToReplace = $"{Global.config.ModsFolder}{Global.s}{Path.GetFileName(modFile)}";
