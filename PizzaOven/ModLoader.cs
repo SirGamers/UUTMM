@@ -57,11 +57,11 @@ namespace PizzaOven
         {
             var errors = 0;
             var successes = 0;
-            /* ditto
-             var FilesToPatch = Directory.GetFiles($"{Global.config.ModsFolder}{Global.s}sound{Global.s}Desktop").ToList();
-            FilesToPatch.Insert(0, $"{Global.config.ModsFolder}{Global.s}data.win");
-            FilesToPatch.Insert(1, $"{Global.config.ModsFolder}{Global.s}UNDERTALE.exe");
-            */
+            var FilesToPatch = new List<string>
+            {
+                $"{Global.config.ModsFolder}{Global.s}data.win",
+                $"{Global.config.ModsFolder}{Global.s}UNDERTALE.exe"
+            };
             var xdelta = $"{Global.assemblyLocation}{Global.s}Dependencies{Global.s}xdelta.exe";
             if (!File.Exists(xdelta))
             {
@@ -130,32 +130,6 @@ namespace PizzaOven
                             errors++;
                         }
                     }
-                    // Language .txt files
-                    else if (extension.Equals(".txt", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        // Verify .txt file is for language
-                        if (File.ReadAllText(modFile).Contains("lang = ", StringComparison.InvariantCultureIgnoreCase))
-                        {
-                            // Copy over file to lang folder
-                            File.Copy(modFile, $"{Global.config.ModsFolder}{Global.s}lang{Global.s}{Path.GetFileName(modFile)}", true);
-                            Global.logger.WriteLine($"Copied over {Path.GetFileName(modFile)} to language folder", LoggerType.Info);
-                            successes++;
-                        }
-                    }
-                    // Font .png files
-                    else if (extension.Equals(".png", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        // Check if png is in fonts folder
-                        if (modFile.Contains("fonts", StringComparison.InvariantCultureIgnoreCase))
-                        {
-                            // Create fonts folder
-                            Directory.CreateDirectory($"{Global.config.ModsFolder}{Global.s}lang{Global.s}fonts");
-                            // Copy over file to fonts folder
-                            File.Copy(modFile, $"{Global.config.ModsFolder}{Global.s}lang{Global.s}fonts{Global.s}{Path.GetFileName(modFile)}", true);
-                            Global.logger.WriteLine($"Copied over {Path.GetFileName(modFile)} to fonts folder", LoggerType.Info);
-                            successes++;
-                        }
-                    }
                     // Copy over .win file in case modder provides entire file instead of .xdelta patch
                     else if (extension.Equals(".win", StringComparison.InvariantCultureIgnoreCase))
                     {
@@ -167,25 +141,25 @@ namespace PizzaOven
                         Global.logger.WriteLine($"Copied over {Path.GetFileName(modFile)} to use instead of data.win", LoggerType.Info);
                         successes++;
                     }
-                    // Copy over .bank file in case modder provides entire file instead of .xdelta patch
-                    else if (extension.Equals(".bank", StringComparison.InvariantCultureIgnoreCase))
+                    // Copy over .ogg file
+                    else if (extension.Equals(".ogg", StringComparison.InvariantCultureIgnoreCase))
                     {
-                        var FileToReplace = $"{Global.config.ModsFolder}{Global.s}sound{Global.s}Desktop{Global.s}{Path.GetFileName(modFile)}";
+                        var FileToReplace = $"{Global.config.ModsFolder}{Global.s}{Path.GetFileName(modFile)}";
                         if (File.Exists(FileToReplace))
                         {
                             // Only make backup if it doesn't already exist
                             if (!File.Exists($"{FileToReplace}.po"))
                                 File.Copy(FileToReplace, $"{FileToReplace}.po", true);
                             File.Copy(modFile, FileToReplace, true);
-                            Global.logger.WriteLine($"Copied over {Path.GetFileName(modFile)} to use in sound folder", LoggerType.Info);
+                            Global.logger.WriteLine($"Copied over {Path.GetFileName(modFile)} to use in game folder", LoggerType.Info);
                         }
                         // Copy the file over if its not vanilla
                         else
                         {
-                            var FileToAdd = $"{Global.config.ModsFolder}{Global.s}sound{Global.s}Desktop{Global.s}{Path.GetFileName(modFile)}";
+                            var FileToAdd = $"{Global.config.ModsFolder}{Global.s}{Path.GetFileName(modFile)}";
                             // Add subdirectory name if it's not the same name as the mod folder
                             if (!Path.GetFileName(Path.GetDirectoryName(modFile)).Equals(Path.GetFileName(mod), StringComparison.InvariantCultureIgnoreCase))
-                                FileToAdd = $"{Global.config.ModsFolder}{Global.s}sound{Global.s}Desktop{Global.s}{Path.GetFileName(Path.GetDirectoryName(modFile))}{Global.s}{Path.GetFileName(modFile)}";
+                                FileToAdd = $"{Global.config.ModsFolder}{Global.s}{Path.GetFileName(Path.GetDirectoryName(modFile))}{Global.s}{Path.GetFileName(modFile)}";
                             Directory.CreateDirectory(Path.GetDirectoryName(FileToAdd));
                             File.Copy(modFile, FileToAdd, true);
 
@@ -200,19 +174,11 @@ namespace PizzaOven
                         Global.logger.WriteLine($"Copied over {Path.GetFileName(modFile)} to game folder", LoggerType.Info);
                         successes++;
                     }
-                    // Video Files
-                    else if (extension.Equals(".mp4", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        // Copy over file to game folder
-                        File.Copy(modFile, $"{Global.config.ModsFolder}{Global.s}{Path.GetFileName(modFile)}", true);
-                        Global.logger.WriteLine($"Copied over {Path.GetFileName(modFile)} to game folder", LoggerType.Info);
-                        successes++;
-                    }
                 }
                 catch (Exception e)
                 {
                     if (e is System.UnauthorizedAccessException)
-                        Global.logger.WriteLine($"Access denied when trying to apply {Path.GetFileName(modFile)}. Try reinstalling Pizza Tower to a folder you have access to or running Pizza Oven in administrator mode", LoggerType.Error);
+                        Global.logger.WriteLine($"Access denied when trying to apply {Path.GetFileName(modFile)}. Try reinstalling Undertale to a folder you have access to or running UUTMM in administrator mode", LoggerType.Error);
                     else
                         throw;
                 }
@@ -250,7 +216,7 @@ namespace PizzaOven
                     catch (Exception e)
                     {
                         if (e is System.UnauthorizedAccessException)
-                            Global.logger.WriteLine($"Access denied when trying to restore {Path.GetFileName(file)}. Try reinstalling Pizza Tower to a folder you have access to or running Pizza Oven in administrator mode", LoggerType.Error);
+                            Global.logger.WriteLine($"Access denied when trying to restore {Path.GetFileName(file)}. Try reinstalling Undertale to a folder you have access to or running UUTMM in administrator mode", LoggerType.Error);
                         else
                             throw;
                     }
@@ -324,7 +290,7 @@ namespace PizzaOven
                                 if (!string.IsNullOrEmpty(prevLine))
                                 {
                                     version = prevLine;
-                                    Global.logger.WriteLine($"Patch applies to Pizza Tower: {version}", LoggerType.Info);
+                                    Global.logger.WriteLine($"Patch applies to Undertale: {version}", LoggerType.Info);
                                 }
                                 return;
                             }
