@@ -34,9 +34,6 @@ namespace PizzaOven
                             throw;
                         return false;
                     }
-<<<<<<< HEAD
-=======
-            */
             // Delete all dlls that aren't vanilla
             // keeping this cuz theres a small chance that its needed but prob not
             var dlls = new List<string>(new string[] { "steam_api.dll", "D3DX9_43.dll"});
@@ -72,7 +69,6 @@ namespace PizzaOven
                         return false;
                     }
             */
->>>>>>> 339279df3fea3ffbb1ce2fe4e75e512fef08c978
             // Delete .win from older version of UUTMM
             if (File.Exists($"{Global.config.ModsFolder}{Global.s}UUTMM.win"))
                 try {
