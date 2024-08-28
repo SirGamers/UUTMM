@@ -2,6 +2,8 @@
 
 to do:
 
+FIX DELETING FILES
+
 finish/test mod (down)loading
 
 one click
