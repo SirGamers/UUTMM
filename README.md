@@ -1,8 +1,6 @@
 to do:
 
-finish mod loading
-
-update class names or shiz
+finish/test mod (down)loading
 
 one click
 
