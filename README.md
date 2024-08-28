@@ -1,5 +1,9 @@
-ok so the state of this porject is goofy
+to do:
 
-[this exists](https://gamebanana.com/tools/16960) but in my experience doesn't work well
+finish mod loading
 
-so idk if im gonna continue this
+update class names or shiz
+
+one click
+
+deltarune??? undertale yellow?????
