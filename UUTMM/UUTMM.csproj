@@ -3,29 +3,29 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net7.0-windows</TargetFramework>
-    <RootNamespace>PizzaOven</RootNamespace>
+    <RootNamespace>UUTMM</RootNamespace>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>Assets\PizzaOvenIcon.ico</ApplicationIcon>
-    <AssemblyName>PizzaOven</AssemblyName>
-    <AssemblyVersion>1.0.14.0</AssemblyVersion>
+    <ApplicationIcon>Assets\UUTMMIcon.ico</ApplicationIcon>
+    <AssemblyName>UUTMM</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Assets\PizzaOvenLogo.png" />
-    <None Remove="Assets\PizzaOvenPreview.png" />
+    <None Remove="Assets\UUTMMLogo.png" />
+    <None Remove="Assets\UUTMMPreview.png" />
     <None Remove="Assets\RobotoMono-Regular.ttf" />
     <None Remove="Dependencies\XDelta_Common_Checksum.txt" />
     <None Remove="GameBanana.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Assets\PizzaOvenIcon.ico" />
+    <Content Include="Assets\UUTMMIcon.ico" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FontAwesome5" Version="2.1.11" />
     <PackageReference Include="gong-wpf-dragdrop" Version="3.2.1" />
-    <PackageReference Include="Onova" Version="2.6.11" />
+    <PackageReference Include="Onova" Version="2.6.12" />
     <PackageReference Include="SevenZipExtractor" Version="1.0.17" />
     <PackageReference Include="SharpCompress" Version="0.37.2" />
     <PackageReference Include="WindowsAPICodePack-Core" Version="1.1.2" />
@@ -34,8 +34,8 @@
 
   <ItemGroup>
     <Resource Include="Assets\GameBanana.png" />
-    <Resource Include="Assets\PizzaOvenLogo.png" />
-    <Resource Include="Assets\PizzaOvenPreview.png" />
+    <Resource Include="Assets\UUTMMLogo.png" />
+    <Resource Include="Assets\UUTMMPreview.png" />
     <Resource Include="Assets\RobotoMono-Regular.ttf" />
     <EmbeddedResource Include="Dependencies\XDelta_Common_Checksum.txt">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>

@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace PizzaOven
+namespace UUTMM
 {
     public static class Global
     {

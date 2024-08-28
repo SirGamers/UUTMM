@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Media.Imaging;
 
-namespace PizzaOven
+namespace UUTMM
 {
     /// <summary>
     /// Interaction logic for Download.xaml

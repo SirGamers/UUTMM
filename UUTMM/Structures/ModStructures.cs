@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using PizzaOven.UI;
+using UUTMM.UI;
 
-namespace PizzaOven
+namespace UUTMM
 {
     public class Mod
     {

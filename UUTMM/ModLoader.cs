@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Text.Json;
 
-namespace PizzaOven
+namespace UUTMM
 {
     public static class ModLoader
     {
@@ -126,8 +126,8 @@ namespace PizzaOven
                                 Global.logger.WriteLine($"Attempting to patch {Path.GetFileName(file)} with {Path.GetFileName(modFile)}...", LoggerType.Info);
                                 Patch(file, modFile, $"{Path.GetDirectoryName(file)}{Global.s}temp", xdelta);
                                 // Only make backup if it doesn't already exist
-                                if (!File.Exists($"{file}.po"))
-                                    File.Copy(file, $"{file}.po", true);
+                                if (!File.Exists($"{file}.sans"))
+                                    File.Copy(file, $"{file}.sans", true);
                                 File.Move($"{Path.GetDirectoryName(file)}{Global.s}temp", file, true);
                                 Global.logger.WriteLine($"Applied {Path.GetFileName(modFile)} to {Path.GetFileName(file)}.", LoggerType.Info);
                                 successes++;
@@ -171,8 +171,8 @@ namespace PizzaOven
                     {
                         var dataWin = $"{Global.config.ModsFolder}{Global.s}data.win";
                         // Only make backup if it doesn't already exist
-                        if (!File.Exists($"{dataWin}.po"))
-                            File.Copy(dataWin, $"{dataWin}.po", true);
+                        if (!File.Exists($"{dataWin}.sans"))
+                            File.Copy(dataWin, $"{dataWin}.sans", true);
                         File.Copy(modFile, dataWin, true);
                         Global.logger.WriteLine($"Copied over {Path.GetFileName(modFile)} to use instead of data.win", LoggerType.Info);
                         successes++;
@@ -184,8 +184,8 @@ namespace PizzaOven
                         if (File.Exists(FileToReplace))
                         {
                             // Only make backup if it doesn't already exist
-                            if (!File.Exists($"{FileToReplace}.po"))
-                                File.Copy(FileToReplace, $"{FileToReplace}.po", true);
+                            if (!File.Exists($"{FileToReplace}.sans"))
+                                File.Copy(FileToReplace, $"{FileToReplace}.sans", true);
                             File.Copy(modFile, FileToReplace, true);
                             Global.logger.WriteLine($"Copied over {Path.GetFileName(modFile)} to use in game folder", LoggerType.Info);
                         }
@@ -244,7 +244,7 @@ namespace PizzaOven
         {
             if (Directory.Exists(path))
             {
-                foreach (var file in Directory.GetFiles(path, "*.po", SearchOption.AllDirectories)) {
+                foreach (var file in Directory.GetFiles(path, "*.sans", SearchOption.AllDirectories)) {
                     try
                     {
                         File.Move(file, Path.ChangeExtension(file, String.Empty), true);

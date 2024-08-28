@@ -7,7 +7,7 @@ using SharpCompress.Common;
 using SharpCompress.Readers;
 using System.Windows;
 
-namespace PizzaOven
+namespace UUTMM
 {
     public class ZipExtractor : IPackageExtractor
     {

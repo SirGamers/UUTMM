@@ -16,7 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Xml.Linq;
 using System.Net.Http;
 using System.Windows.Media;
-using PizzaOven.UI;
+using UUTMM.UI;
 using System.Windows.Controls.Primitives;
 using System.Security.Cryptography;
 using Microsoft.Win32;
@@ -27,7 +27,7 @@ using SharpCompress.Common;
 using SharpCompress.Readers;
 using System.Threading;
 
-namespace PizzaOven
+namespace UUTMM
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -102,7 +102,7 @@ namespace PizzaOven
 
             defaultFlow.Blocks.Add(ConvertToFlowParagraph(defaultText));
             DescriptionWindow.Document = defaultFlow;
-            var bitmap = new BitmapImage(new Uri("pack://application:,,,/PizzaOven;component/Assets/PizzaOvenPreview.png"));
+            var bitmap = new BitmapImage(new Uri("pack://application:,,,/UUTMM;component/Assets/UUTMMPreview.png"));
             Preview.Source = bitmap;
             PreviewBG.Source = null;
 
@@ -648,7 +648,7 @@ namespace PizzaOven
             if (mod == null || !File.Exists($"{Global.assemblyLocation}{Global.s}Mods{Global.s}{mod}{Global.s}mod.json"))
             {
                 DescriptionWindow.Document = defaultFlow;
-                var bitmap = new BitmapImage(new Uri("pack://application:,,,/PizzaOven;component/Assets/PizzaOvenPreview.png"));
+                var bitmap = new BitmapImage(new Uri("pack://application:,,,/UUTMM;component/Assets/UUTMMPreview.png"));
                 Preview.Source = bitmap;
                 PreviewBG.Source = null;
             }
@@ -694,7 +694,7 @@ namespace PizzaOven
                 }
                 else
                 {
-                    var bitmap = new BitmapImage(new Uri("pack://application:,,,/PizzaOven;component/Assets/PizzaOvenPreview.png"));
+                    var bitmap = new BitmapImage(new Uri("pack://application:,,,/UUTMM;component/Assets/UUTMMPreview.png"));
                     Preview.Source = bitmap;
                     PreviewBG.Source = null;
                 }
@@ -744,14 +744,14 @@ namespace PizzaOven
         {
             Button button = sender as Button;
             var item = button.DataContext as GameBananaRecord;
-            new ModDownloader().BrowserDownload("Pizza Tower", item);
+            new ModDownloader().BrowserDownload("Undertale", item);
         }
         private void AltDownload_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
             var item = button.DataContext as GameBananaRecord;
             new AltLinkWindow(item.AlternateFileSources, item.Title,
-                "Pizza Tower",
+                "Undertale",
                 item.Link.AbsoluteUri).ShowDialog();
         }
         private void Homepage_Click(object sender, RoutedEventArgs e)

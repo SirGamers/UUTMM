@@ -12,11 +12,11 @@ using Onova.Services;
 using System.Diagnostics;
 using System.Reflection;
 using System.IO;
-using PizzaOven.UI;
+using UUTMM.UI;
 using System.Windows.Media.Imaging;
 using Onova.Models;
 
-namespace PizzaOven
+namespace UUTMM
 {
     public class AutoUpdater
     {
@@ -63,7 +63,7 @@ namespace PizzaOven
                             MessageBox.Show($"Finished downloading {fileName}!\nUUTMM will now restart.", "Notification", MessageBoxButton.OK);
                             // Update PizzaOven
                             UpdateManager updateManager = new UpdateManager(AssemblyMetadata.FromAssembly(Assembly.GetEntryAssembly(), Process.GetCurrentProcess().MainModule.FileName),
-                                new LocalPackageResolver($"{Global.assemblyLocation}{Global.s}Downloads{Global.s}PizzaOvenUpdate"), new ZipExtractor());
+                                new LocalPackageResolver($"{Global.assemblyLocation}{Global.s}Downloads{Global.s}UUTMMUpdate"), new ZipExtractor());
                             if (!Version.TryParse(onlineVersion, out Version version))
                             {
                                 MessageBox.Show($"Error parsing {onlineVersion}!\nCancelling update.", "Notification", MessageBoxButton.OK);
@@ -93,9 +93,9 @@ namespace PizzaOven
                     Directory.CreateDirectory(@$"{Global.assemblyLocation}{Global.s}Downloads");
                 }
                 // Create the downloads folder if necessary
-                if (!Directory.Exists(@$"{Global.assemblyLocation}{Global.s}Downloads{Global.s}PizzaOvenUpdate"))
+                if (!Directory.Exists(@$"{Global.assemblyLocation}{Global.s}Downloads{Global.s}UUTMMUpdate"))
                 {
-                    Directory.CreateDirectory(@$"{Global.assemblyLocation}{Global.s}Downloads{Global.s}PizzaOvenUpdate");
+                    Directory.CreateDirectory(@$"{Global.assemblyLocation}{Global.s}Downloads{Global.s}UUTMMUpdate");
                 }
                 progressBox = new ProgressBox(cancellationToken);
                 progressBox.progressBar.Value = 0;
@@ -106,18 +106,18 @@ namespace PizzaOven
                 progressBox.Activate();
                 // Write and download the file
                 using (var fs = new FileStream(
-                    $@"{Global.assemblyLocation}{Global.s}Downloads{Global.s}PizzaOvenUpdate/{fileName}", FileMode.Create, FileAccess.Write, FileShare.None))
+                    $@"{Global.assemblyLocation}{Global.s}Downloads{Global.s}UUTMMUpdate/{fileName}", FileMode.Create, FileAccess.Write, FileShare.None))
                 {
                     await client.DownloadAsync(uri, fs, fileName, progress, cancellationToken.Token);
                 }
                 // Rename the file
-                File.Move($@"{Global.assemblyLocation}{Global.s}Downloads{Global.s}PizzaOvenUpdate{Global.s}{fileName}", $@"{Global.assemblyLocation}{Global.s}Downloads{Global.s}PizzaOvenUpdate{Global.s}{version}.zip", true);
+                File.Move($@"{Global.assemblyLocation}{Global.s}Downloads{Global.s}UUTMMUpdate{Global.s}{fileName}", $@"{Global.assemblyLocation}{Global.s}Downloads{Global.s}UUTMMUpdate{Global.s}{version}.zip", true);
                 progressBox.Close();
             }
             catch (OperationCanceledException)
             {
                 // Remove the file is it will be a partially downloaded one and close up
-                File.Delete(@$"{Global.assemblyLocation}{Global.s}Downloads{Global.s}PizzaOvenUpdate{Global.s}{fileName}");
+                File.Delete(@$"{Global.assemblyLocation}{Global.s}Downloads{Global.s}UUTMMUpdate{Global.s}{fileName}");
                 if (progressBox != null)
                 {
                     progressBox.finished = true;

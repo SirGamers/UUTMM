@@ -1,4 +1,4 @@
-﻿namespace PizzaOven
+﻿namespace UUTMM
 {
     public class DownloadProgress
     {

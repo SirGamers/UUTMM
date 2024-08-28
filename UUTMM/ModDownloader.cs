@@ -9,13 +9,13 @@ using System.Text.Json;
 using SharpCompress.Common;
 using System.Text.RegularExpressions;
 using SharpCompress.Readers;
-using PizzaOven.UI;
+using UUTMM.UI;
 using SharpCompress.Archives.SevenZip;
 using System.Linq;
 using SharpCompress.Archives;
 using SevenZipExtractor;
 
-namespace PizzaOven
+namespace UUTMM
 {
     public class ModDownloader
     {

@@ -2,7 +2,7 @@
 using System.Windows.Data;
 using System.Windows.Media;
 
-namespace PizzaOven
+namespace UUTMM
 {
     public class CategoryColorConverter : IValueConverter
     {

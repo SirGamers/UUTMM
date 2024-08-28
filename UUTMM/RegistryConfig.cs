@@ -2,7 +2,7 @@
 using System.IO;
 using System.Reflection;
 
-namespace PizzaOven
+namespace UUTMM
 {
     public static class RegistryConfig
     {

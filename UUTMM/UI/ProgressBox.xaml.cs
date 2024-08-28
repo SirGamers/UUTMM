@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 using System.Threading;
 using System.ComponentModel;
 
-namespace PizzaOven
+namespace UUTMM
 {
     /// <summary>
     /// Interaction logic for ProgressBox.xaml

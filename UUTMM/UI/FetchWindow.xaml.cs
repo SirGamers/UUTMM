@@ -10,7 +10,7 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Windows.Input;
 
-namespace PizzaOven
+namespace UUTMM
 {
     /// <summary>
     /// Interaction logic for EditWindow.xaml

@@ -8,7 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.Reflection;
 
-namespace PizzaOven.UI
+namespace UUTMM.UI
 {
     /// <summary>
     /// Interaction logic for ChangelogBox.xaml

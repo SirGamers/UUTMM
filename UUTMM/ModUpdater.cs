@@ -6,7 +6,7 @@ using System.IO;
 using System.Text.Json;
 using System.Net.Http;
 using System.Threading;
-using PizzaOven.UI;
+using UUTMM.UI;
 using System.Reflection;
 using System.Windows;
 using SharpCompress.Common;
@@ -15,7 +15,7 @@ using SharpCompress.Archives.SevenZip;
 using SharpCompress.Archives;
 using SevenZipExtractor;
 
-namespace PizzaOven
+namespace UUTMM
 {
     public static class ModUpdater
     {

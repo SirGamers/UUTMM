@@ -4,7 +4,7 @@ using System.Windows.Threading;
 using System.Threading;
 using System;
 
-namespace PizzaOven
+namespace UUTMM
 {
     /// <summary>
     /// Interaction logic for App.xaml
