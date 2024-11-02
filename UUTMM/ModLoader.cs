@@ -161,7 +161,7 @@ namespace UUTMM
                             else
                             {
                                 Global.logger.WriteLine($"{Path.GetFileName(modFile)} wasn't able to patch any file. Ensure that either the mod or your game version is up to date. {Path.GetFileName(modFile)} is intended for {version}. " +
-                                    $"If this version number matches with your current game version go to {Global.config.ModsFolder} and delete data.win.po and anything else with a .po extension then verify integrity of game files and try again.", LoggerType.Error);
+                                    $"If this version number matches with your current game version go to {Global.config.ModsFolder} and delete data.win.sans and anything else with a .sans extension then verify integrity of game files and try again.", LoggerType.Error);
                             }
                             errors++;
                         }
